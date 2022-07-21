@@ -1,2 +1,2 @@
-# sistema-finan-as-python
+# sistema-financas-python
  
