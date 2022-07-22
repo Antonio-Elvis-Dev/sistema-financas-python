@@ -17,12 +17,23 @@ import pandas as pd
 
 # ========= Layout ========= #
 layout = dbc.Col([
-                
+                html.H1("MyBudget", className="text-primary"),
+                html.P("By ASIMOV", className="text-info"),
+                html.Hr(),
+
+        # Sessão de Perfil
+                dbc.Button(id='botao_avatar',
+                children=[html.Img(src='/assets/img_hom.png', id='avatar_change', alt='Avatar', className='perfil_avatar')],
+                style={'background-color':'transparent', 'border-color':'transparent'})
             ])
 
+        # Sessão de Perfil
 
-
+                
 
 
 # =========  Callbacks  =========== #
 # Pop-up receita
+
+
+

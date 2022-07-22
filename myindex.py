@@ -1,4 +1,6 @@
+# from curses import init_pair
 import imp
+from importlib.resources import path
 from dash import html, dcc
 import dash
 from dash.dependencies import Input, Output
@@ -7,7 +9,7 @@ import pandas as pd
 import plotly.express as px
 
 from app import *
-from components import sidebar
+from components import sidebar, dashboards, extratos
 
 
 
@@ -21,15 +23,23 @@ dbc.Row([
     dbc.Col([
         dcc.Location(id='url'),
         sidebar.layout
-    ],md=2)
+    ],md=2),
+    dbc.Col([
+        content
+    ],md=10)
 ])
 
 
 
-], fluid=True,)
+], fluid=True,) # interface ajustavel automaticamente
 
-
+@app.callback(Output('page-content', 'children'), [Input('url','pathname')])
+def render_page(pathname):
+    if pathname == '/' or pathname == '/dashboards':
+        return dashboards.layout
+    if pathname == '/extratos':
+        return extratos.layout
 
 
 if __name__ == '__main__':
-    app.run_server(port=8051, debug=True)
+    app.run_server(port=8051, debug=True) #servidor
