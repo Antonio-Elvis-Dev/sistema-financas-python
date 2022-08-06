@@ -44,14 +44,57 @@ layout = dbc.Col([
                 dbc.Row([
                     dbc.Col([
                         dbc.Label('Descrição: '),
-                        dbc.Input(placeholder="Ex.: divdendos da bolsa, herença...", id="txt-receita")
+                        dbc.Input(placeholder="Ex.: dividendos da bolsa, herença...", id="txt-receita")
                     ],width=6),
                     
                     dbc.Col([
                     dbc.Label("Valor: "),
                     dbc.Input(placeholder="$100.00", id="valor_receita", value="")    
                     ], width=6)
+                ]),
+                dbc.Row([
+                    dbc.Col([
+                        dbc.Label("Data: "),
+                        dcc.DatePickerSingle(id='date-receitas',
+                                             min_date_allowed=date(2020,1,1),
+                                             max_date_allowed=date(2030,1,1),
+                                             date = datetime.today(),
+                                             style={"width": "100%"}),
+                    ],width=4),
+                    
+                    dbc.Col([
+                        dbc.Label("Extras"),
+                        dbc.Checklist(
+                            options=[],
+                            value=[],
+                            id = 'switches-input-receita',
+                            switch=True
+                        )
+                    ],width=4),
+                    dbc.Col([
+                        html.Label('Categoria da Receita'),
+                        dbc.Select(id='select_receita', options=[],value=[]),
+                    ],width=4),
+                ], style={'margin-top':'25px'}),
+                
+                dbc.Row([
+                    dbc.Accordion([
+                        dbc.AccordionItem(children=[
+                            dbc.Row([
+                                dbc.Col([
+                                    html.Legend("Adicionar Categoria", style={'color':'green'}),
+                                    dbc.Input(type="text", placeholder="Nova Categoria", id="input-add-receita", value=""),
+                                    html.Br(),
+                                    dbc.Button("Adicionar", className="btn btn-success", id="add-category-receita", style={"margin-top":"20px"}),
+                                    html.Br(),
+                                    html.Div(id="category-div-add-receita", style={"":""}) # MINUTO 38:49
+                                    
+                                ])
+                            ])
+                        ])
+                    ])
                 ])
+        
             ]),
         ], id='modal-novo-receita'),
 

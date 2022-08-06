@@ -40,6 +40,7 @@ def render_page(pathname):
     if pathname == '/extratos':
         return extratos.layout
 
-
 if __name__ == '__main__':
     app.run_server(port=8051, debug=True) #servidor
+    
+    
