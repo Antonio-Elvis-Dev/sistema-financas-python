@@ -1,4 +1,3 @@
-from turtle import width
 from dash import html, dcc
 from dash.dependencies import Input, Output, State
 from datetime import date, datetime, timedelta
@@ -17,7 +16,6 @@ card_icon = {
     "fintSize": "30",
     "margin": "auto"
 }
-
 
 # =========  Layout  =========== #
 layout = dbc.Col([
@@ -108,6 +106,11 @@ layout = dbc.Col([
         dbc.Col(
             dbc.Card(dcc.Graph(id='graph1'), style={'height': '100%', 'padding': "10px"}), width=8
     )
+    ],style={'margin':'10px'}),
+    dbc.Row([
+        dbc.Col( dbc.Card(dcc.Graph(id='graph2'), style={'padding':'10px'}), width=6),
+        dbc.Col( dbc.Card(dcc.Graph(id='graph3'), style={'padding':'10px'}), width=3),
+        dbc.Col( dbc.Card(dcc.Graph(id='graph4'), style={'padding':'10px'}), width=3),
     ])
 ])
 

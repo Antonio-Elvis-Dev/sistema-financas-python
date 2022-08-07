@@ -12,11 +12,27 @@ from app import app
 
 # =========  Layout  =========== #
 layout = dbc.Col([
+    dbc.Row([
+        html.Legend('Tabela de Despesas'),
+        html.Div(id='tabelas-despesas', className='dbc')
+    ]),
 
-    html.H5('Página Extratos')
-
-
-], )
+    dbc.Row([
+        dbc.Col([
+            dcc.Graph(id='bar-graph', style={'margin': '20px'})
+        ], width=9),
+        dbc.Col([
+            dbc.Card(
+            dbc.CardBody([
+                html.H4('Despesas'),
+                html.Legend('R$ 4000', id='valor_despesa_card',
+                            style={'font-size': '60px'}),
+                html.H6('Total Despesas'),
+            ], style={'text-aling': 'center', 'padding': '30px'})
+            )
+        ], width=3)
+    ])
+],style={'padding':'10px'})
 
 # =========  Callbacks  =========== #
 # Tabela
